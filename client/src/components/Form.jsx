@@ -51,11 +51,9 @@ export const Form = (props) => {
 
   const checkToxicity = async (message, eventTarget) => {
     const model = await load(threshold)
-    console.log("Model loaded...");
     const predictions = await model.classify(message)
     const isToxic = predictions[6].results[0].match
     setToxicity(isToxic)
-    console.log(isToxic)
     return isToxic
   }
 
@@ -97,12 +95,10 @@ export const Form = (props) => {
     setPos(eventTarget);
     setIsModal({ open: true, text: "Saving message..." });
     const validateResult = await (isLetterValid(message, eventTarget))
-    console.log("Save the message? ", validateResult)
     if (validateResult) {
       try {
         await axios.post(`/letters/new`, { message, letterType, senderID, emote })
         setIsModal({ open: true, text: "Message save success!" });
-        // console.log("response", response)
         setTimeout(() => {
           navigate("/letters/profile")
         }, 500)
@@ -115,7 +111,6 @@ export const Form = (props) => {
     setPos(eventTarget);
     setIsModal({ open: true, text: "Saving response..." });
     const validateResult = await (isLetterValid(message, eventTarget))
-    console.log("Save the message? ", validateResult)
     if (validateResult) {
       try {
         await axios.post(`/responses/new`, { message, letterID, responderID })

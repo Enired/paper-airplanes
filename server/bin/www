@@ -25,11 +25,11 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-webSocketThing = server.listen(port, ()=>{console.log("Now Listening Bro")});
+webSocketThing = server.listen(port, () => { console.log("Now Listening Bro") });
 const io = new Server(webSocketThing);
 
 io.on('connect', (client) => {
-  console.log(client.id)
+
 })
 
 
