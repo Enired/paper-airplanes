@@ -19,33 +19,11 @@ module.exports = (db) => {
       res.redirect("/register")
     }
     res.redirect("/")
-    // if logged in:
-    //   redirect home
-    // if not logged in:
-    //   render the registration form
   });
 
   //POST create a new user
   router.post("/register", (req, res) => {
-    // email = req.body.email
-    // password = req.body.password
 
-    // const username = user.username;
-    // const email = user.email;
-    // const password = user.password;
-
-    // db.query(`
-    // INSERT INTO users (username, email, password) VALUES ($1, $2, $3);
-    // `, [usernamegenerator(), email, password])
-    //   .then((user) => {
-    //     if (!user) {
-    //       res.send({ error: "error" });
-    //       return;
-    //     }
-    //     req.session.userId
-    //   });
-
-    // res.render("")
   });
 
   // GET login form
@@ -55,25 +33,7 @@ module.exports = (db) => {
       .then((data) => {
         res.json(data.rows);
       })
-      .then(()=>{
-        console.log(12,req.query.email)
-
-      })
   });
-
-  // POST login
-  // router.post('/login', (req, res) => {
-  //       const queryString = `
-  //   SELECT id
-  //   FROM users where email = $1`;
-  //   db.query(queryString, [req.body.email])
-  //     .then((data) => {
-  //       res.json(data.rows);
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).json({ error: err.message });
-  //     });
-  // });
 
   // POST logout
   router.post("/logout", (req, res) => { });
